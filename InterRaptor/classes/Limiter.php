@@ -62,4 +62,16 @@ class Limiter implements LimiterInterface
 
     }
 
+    public function toInterrupt()
+    {
+
+        if ((time() - $this->time_start) >= ($this->time_limit - $this->time_lag)) $result = true;
+        else $result = false;
+
+        $this->interrupt = $result;
+
+        return $result;
+
+    }
+
 }

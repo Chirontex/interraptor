@@ -40,4 +40,11 @@ interface LimiterInterface
      */
     public function interruption();
 
+    /**
+     * Checks if it is the time to interrupt.
+     * 
+     * @return bool
+     */
+    public function toInterrupt();
+
 }

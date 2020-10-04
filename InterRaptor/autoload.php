@@ -1,6 +1,6 @@
 <?php
 /**
- *    InterRaptor 0.1
+ *    InterRaptor 0.2
  *    Copyright (C) 2020  Dmitry Shumilin (dr.noisier@yandex.ru)
  *
  *    This program is free software: you can redistribute it and/or modify
