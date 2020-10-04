@@ -20,7 +20,7 @@ namespace InterRaptor;
 
 use Exception;
 
-class Limiter implements LimiterInterface
+final class Limiter implements LimiterInterface
 {
 
     private $time_start;

@@ -1,6 +1,6 @@
 <?php
 /**
- *    InterRaptor 0.3
+ *    InterRaptor
  *    Copyright (C) 2020  Dmitry Shumilin (dr.noisier@yandex.ru)
  *
  *    This program is free software: you can redistribute it and/or modify
@@ -16,20 +16,24 @@
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-spl_autoload_register(function($classname) {
+namespace InterRaptor;
 
-    $mobule_namespace = 'InterRaptor';
+final class SaversRegistry implements SaversRegistryInterface
+{
 
-    if (strpos($classname, $mobule_namespace) !== false) {
+    private static $savers = [];
 
-        $dir = __DIR__.'/classes/';
+    public static function saverSet(string $pathfile)
+    {
 
-        if (substr($classname, -9) === 'Interface') $dir .= 'interfaces/';
+        if (array_search($pathfile, SaversRegistry::$savers) === false) {
 
-        $filename = substr($classname, strpos($classname, $mobule_namespace.'\\') + (iconv_strlen($mobule_namespace) + 1)).'.php';
+            SaversRegistry::$savers[] = $pathfile;
 
-        if (file_exists($dir.$filename)) require_once $dir.$filename;
+            return true;
+
+        } else return false;
 
     }
 
-});
+}
