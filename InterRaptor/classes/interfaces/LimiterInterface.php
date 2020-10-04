@@ -33,4 +33,11 @@ interface LimiterInterface
      */
     public function __construct(int $time_limit = 0, int $time_lag = 1);
 
+    /**
+     * Returns the value of object private property $interrupt.
+     * 
+     * @return bool
+     */
+    public function interruption();
+
 }

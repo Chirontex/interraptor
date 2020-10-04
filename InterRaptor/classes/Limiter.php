@@ -26,6 +26,7 @@ class Limiter implements LimiterInterface
     private $time_start;
     private $time_limit;
     private $time_lag;
+    private $interrupt;
 
     public function __construct(int $time_limit = 0, int $time_lag = 1)
     {
@@ -50,6 +51,14 @@ class Limiter implements LimiterInterface
 
         $this->time_limit = $time_limit;
         $this->time_lag = $time_lag;
+        $this->interrupt = false;
+
+    }
+
+    public function interruption()
+    {
+
+        return $this->interrupt;
 
     }
 
