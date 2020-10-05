@@ -26,8 +26,12 @@ final class Saver implements SaverInterface
     private $pathfile;
     private $structure;
 
-    public function __construct(string $pathfile, array $structure)
+    public function __construct(string $path, string $filename, array $structure)
     {
+
+        if ((substr($path, -1) !== '/') && (substr($path, -1) !== '\\')) $path .= '/';
+
+        $pathfile = $path.$filename.'.json';
         
         if (SaversRegistry::saverSet($pathfile)) $this->pathfile = $pathfile;
         else throw new Exception(__CLASS__.': pathfile already exists.', -15);
@@ -57,7 +61,5 @@ final class Saver implements SaverInterface
         return $result;
 
     }
-
-    // дописать: разбить pathfile на путь и имя файла, метод сохранения объекта
 
 }

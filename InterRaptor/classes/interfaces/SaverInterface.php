@@ -23,11 +23,20 @@ interface SaverInterface
     /**
      * Saver constructor.
      * 
-     * @param string $pathfile
-     * If pathfile already exists, Exception will be thrown.
+     * @param string $path
+     * @param string $filename
      * @param array $structure
      * if structure is empty, Exception will be thrown.
      */
-    public function __construct(string $pathfile, array $structure);
+    public function __construct(string $path, string $filename, array $structure);
+
+    /**
+     * Saves the data.
+     * 
+     * @param Limiter $limiter
+     * @param array $data
+     * @return bool|int
+     */
+    public function save(Limiter $limiter, array $data);
 
 }
